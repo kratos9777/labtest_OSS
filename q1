@@ -1,0 +1,44 @@
+import numpy as np
+import matplotlib.pyplot as plt
+
+empcodes=np.array([101,102,103,104,105])
+salaries=np.array([50000, 60000, 55000, 45000, 70000])
+attendance=np.zeros(len(empcodes))
+performance=np.array([3, 4, 5, 2, 4])
+
+def enter_attendance():
+    for i in range(len(empcodes)):
+        attendance[i]=float(input(f"Enter attendance for employee {empcodes[i]}: "))
+
+def update_performance():
+    for i in range(len(empcodes)):
+        performance[i]=float(input(f"Enter performance rating for employee {empcodes[i]}: "))
+
+def calculate():
+    avgsalary=np.mean(salaries)
+    maxsalary=np.max(salaries)
+    minsalary=np.min(salaries)
+    print(f"Average Salary:{avgsalary}")
+    print(f"Max Salary:{maxsalary}")
+    print(f"Min Salary:{minsalary}")
+
+def identify():
+    maxsalaryemp=empcodes[np.argmax(salaries)]
+    minsalaryemp=empcodes[np.argmin(salaries)]
+    print(f"Highest paying employee code: {maxsalaryemp}")
+    print(f"Lowest paying employee code: {minsalaryemp}")
+
+def plotp():
+    plt.scatter(empcodes,performance,color='blue',label='Performance')
+    plt.xlabel('Employee Codes')
+    plt.ylabel('Performance Rating')
+    plt.title('Employee Performance Scatter Plot')
+    plt.legend()
+    plt.show()
+
+enter_attendance()
+update_performance()
+calculate()
+identify()
+plotp()
+
